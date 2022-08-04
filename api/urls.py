@@ -1,7 +1,11 @@
-from django.urls import path
+from django.urls import path, include
+from rest_framework import routers
 from . import views
 
 
+router = routers.DefaultRouter()
+router.register('profile', views.UserProfileViewSet)
+
 urlpatterns = [
-    path('hello-view', views.HelloApiView.as_view()),
+    path('', include(router.urls)),
 ]
